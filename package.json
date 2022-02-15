@@ -7,7 +7,15 @@
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "benchmark:build:cold": "hyperfine --prepare 'rm -rf node_modules/.cache .angular/' 'yarn nx build app0' --export-json results/build-previous-ng-major-version-cold.json",
+    "benchmark:build:warm": "hyperfine --warmup 1 'yarn nx build app0' --export-json results/build-previous-ng-major-version-warm.json",
+    "benchmark:test:cold": "hyperfine --prepare 'rm -rf node_modules/.cache .angular/' 'yarn nx run-many --target=test --all' --export-json results/test-previous-ng-major-version-cold.json",
+    "benchmark:test:warm": "hyperfine --warmup 1 'yarn nx run-many --target=test --all' --export-json results/test-previous-ng-major-version-warm.json",
+    "benchmark:lint:cold": "hyperfine --prepare 'rm -rf node_modules/.cache .angular/' 'yarn nx run-many --target=lint --all' --export-json results/lint-previous-ng-major-version-cold.json",
+    "benchmark:lint:warm": "hyperfine --warmup 1 'yarn nx run-many --target=lint --all' --export-json results/lint-previous-ng-major-version-warm.json",
+    "benchmark:e2e:cold": "hyperfine --prepare 'rm -rf node_modules/.cache .angular/' 'yarn nx e2e app0' --export-json results/e2e-previous-ng-major-version-cold.json",
+    "benchmark:e2e:warm": "hyperfine --warmup 1 'yarn nx e2e app0' --export-json results/e2e-previous-ng-major-version-warm.json"
   },
   "private": true,
   "dependencies": {
