@@ -1,0 +1,29 @@
+name: Nx Angular Benchmarks
+on: [push]
+jobs:
+  Run-Benchmarks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Hyperfine
+        run: wget https://github.com/sharkdp/hyperfine/releases/download/v1.12.0/hyperfine_1.12.0_amd64.deb; sudo dpkg -i hyperfine_1.12.0_amd64.deb
+      - name: Checkout Repository Code
+        uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+          cache: 'npm'
+      - name: Install Packages
+        run: yarn install
+      - name: Benchmark Build - Cold
+        run: yarn benchmark:build:cold
+      - name: Benchmark Build - Warm
+        run: yarn benchmark:build:warm
+      - name: Benchmark Lint - Cold
+        run: yarn benchmark:lint:cold
+      - name: Benchmark Lint - Warm
+        run: yarn benchmark:lint:warm
+      - name: Benchmark Test - Cold
+        run: yarn benchmark:test:cold
+      - name: Benchmark Test - Warm
+        run: yarn benchmark:test:warm
