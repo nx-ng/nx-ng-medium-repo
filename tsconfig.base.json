@@ -14,7 +14,38 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nx-ng-medium/app0/lib0": ["libs/app0/lib0/src/index.ts"],
+      "@nx-ng-medium/app0/lib0-lib0": ["libs/app0/lib0-lib0/src/index.ts"],
+      "@nx-ng-medium/app0/lib0-lib0-lib0": [
+        "libs/app0/lib0-lib0-lib0/src/index.ts"
+      ],
+      "@nx-ng-medium/app0/lib0-lib0-lib1": [
+        "libs/app0/lib0-lib0-lib1/src/index.ts"
+      ],
+      "@nx-ng-medium/app0/lib0-lib1": ["libs/app0/lib0-lib1/src/index.ts"],
+      "@nx-ng-medium/app0/lib0-lib1-lib0": [
+        "libs/app0/lib0-lib1-lib0/src/index.ts"
+      ],
+      "@nx-ng-medium/app0/lib0-lib1-lib1": [
+        "libs/app0/lib0-lib1-lib1/src/index.ts"
+      ],
+      "@nx-ng-medium/app0/lib1": ["libs/app0/lib1/src/index.ts"],
+      "@nx-ng-medium/app0/lib1-lib0": ["libs/app0/lib1-lib0/src/index.ts"],
+      "@nx-ng-medium/app0/lib1-lib0-lib0": [
+        "libs/app0/lib1-lib0-lib0/src/index.ts"
+      ],
+      "@nx-ng-medium/app0/lib1-lib0-lib1": [
+        "libs/app0/lib1-lib0-lib1/src/index.ts"
+      ],
+      "@nx-ng-medium/app0/lib1-lib1": ["libs/app0/lib1-lib1/src/index.ts"],
+      "@nx-ng-medium/app0/lib1-lib1-lib0": [
+        "libs/app0/lib1-lib1-lib0/src/index.ts"
+      ],
+      "@nx-ng-medium/app0/lib1-lib1-lib1": [
+        "libs/app0/lib1-lib1-lib1/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

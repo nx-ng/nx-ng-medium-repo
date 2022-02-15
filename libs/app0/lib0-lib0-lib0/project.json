@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/app0/lib0-lib0-lib0",
+  "sourceRoot": "libs/app0/lib0-lib0-lib0/src",
+  "prefix": "nx-ng-medium",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/app0/lib0-lib0-lib0"],
+      "options": {
+        "jestConfig": "libs/app0/lib0-lib0-lib0/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/app0/lib0-lib0-lib0/src/**/*.ts",
+          "libs/app0/lib0-lib0-lib0/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

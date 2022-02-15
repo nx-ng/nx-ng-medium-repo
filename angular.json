@@ -1,6 +1,22 @@
 {
   "version": 2,
   "projects": {
+    "app0": "apps/app0",
+    "app0-e2e": "apps/app0-e2e",
+    "app0-lib0": "libs/app0/lib0",
+    "app0-lib0-lib0": "libs/app0/lib0-lib0",
+    "app0-lib0-lib0-lib0": "libs/app0/lib0-lib0-lib0",
+    "app0-lib0-lib0-lib1": "libs/app0/lib0-lib0-lib1",
+    "app0-lib0-lib1": "libs/app0/lib0-lib1",
+    "app0-lib0-lib1-lib0": "libs/app0/lib0-lib1-lib0",
+    "app0-lib0-lib1-lib1": "libs/app0/lib0-lib1-lib1",
+    "app0-lib1": "libs/app0/lib1",
+    "app0-lib1-lib0": "libs/app0/lib1-lib0",
+    "app0-lib1-lib0-lib0": "libs/app0/lib1-lib0-lib0",
+    "app0-lib1-lib0-lib1": "libs/app0/lib1-lib0-lib1",
+    "app0-lib1-lib1": "libs/app0/lib1-lib1",
+    "app0-lib1-lib1-lib0": "libs/app0/lib1-lib1-lib0",
+    "app0-lib1-lib1-lib1": "libs/app0/lib1-lib1-lib1",
     "app1": "apps/app1",
     "app1-e2e": "apps/app1-e2e"
   }
