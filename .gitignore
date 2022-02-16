@@ -40,5 +40,5 @@ Thumbs.db
 
 .angular
 
-
 results/*.json
+.env
