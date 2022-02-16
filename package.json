@@ -10,7 +10,7 @@
     "test": "nx test",
     "benchmark:build:cold": "hyperfine --prepare 'rm -rf node_modules/.cache .angular/' 'yarn nx build app0' --export-json results/build-previous-nx-minor-version-cold.json",
     "benchmark:build:warm": "hyperfine --warmup 1 'yarn nx build app0' --export-json results/build-previous-nx-minor-version-warm.json",
-    "benchmark:test:cold": "hyperfine --prepare 'rm -rf node_modules/.cache .angular/' 'yarn nx run-many --target=test --all' --export-json results/test-previous-nx-minor-version-cold.json",
+    "benchmark:test:cold": "hyperfine 'yarn nx run-many --target=test --all --skip-nx-cache' --prepare 'yarn jest --clearCache'",
     "benchmark:test:warm": "hyperfine --warmup 1 'yarn nx run-many --target=test --all' --export-json results/test-previous-nx-minor-version-warm.json",
     "benchmark:lint:cold": "hyperfine --prepare 'rm -rf node_modules/.cache .angular/' 'yarn nx run-many --target=lint --all' --export-json results/lint-previous-nx-minor-version-cold.json",
     "benchmark:lint:warm": "hyperfine --warmup 1 'yarn nx run-many --target=lint --all' --export-json results/lint-previous-nx-minor-version-warm.json",
