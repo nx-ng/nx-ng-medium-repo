@@ -17,34 +17,51 @@ const db = getFirestore(app);
 const auth = getAuth();
 await signInAnonymously(auth);
 
-const buildPreviousNxMinorVersionCold = (
-  await import('../../results/build-previous-nx-minor-version-cold.json')
-).default;
-const buildPreviousNxMinorVersionWarm = (
-  await import('../../results/build-previous-nx-minor-version-warm.json')
-).default;
-const testPreviousNxMinorVersionCold = (
-  await import('../../results/test-previous-nx-minor-version-cold.json')
-).default;
-const testPreviousNxMinorVersionWarm = (
-  await import('../../results/test-previous-nx-minor-version-warm.json')
+const { devDependencies, dependencies } = (
+  await import('../../package.json', { assert: { type: 'json' } })
 ).default;
 
+const angularVersion = dependencies['@angular/core'];
+const nxVersion = devDependencies['@nrwl/tao'];
+
+const buildPreviousNxMinorVersionCold = (
+  await import('../../results/build-previous-nx-minor-version-cold.json', {
+    assert: { type: 'json' },
+  })
+).default;
+const buildPreviousNxMinorVersionWarm = (
+  await import('../../results/build-previous-nx-minor-version-warm.json', {
+    assert: { type: 'json' },
+  })
+).default;
+const testPreviousNxMinorVersionCold = (
+  await import('../../results/test-previous-nx-minor-version-cold.json', {
+    assert: { type: 'json' },
+  })
+).default;
+const testPreviousNxMinorVersionWarm = (
+  await import('../../results/test-previous-nx-minor-version-warm.json', {
+    assert: { type: 'json' },
+  })
+).default;
+
+const currentUploadTime = `${Date.now()}`;
+
 await setDoc(
-  doc(db, 'benchmarks', 'build-previous-nx-minor-version-cold'),
-  buildPreviousNxMinorVersionCold
+  doc(db, 'build-previous-nx-minor-version-cold', currentUploadTime),
+  { ...buildPreviousNxMinorVersionCold, angularVersion, nxVersion }
 );
 await setDoc(
-  doc(db, 'benchmarks', 'build-previous-nx-minor-version-warm'),
-  buildPreviousNxMinorVersionWarm
+  doc(db, 'build-previous-nx-minor-version-warm', currentUploadTime),
+  { ...buildPreviousNxMinorVersionWarm, angularVersion, nxVersion }
 );
 await setDoc(
-  doc(db, 'benchmarks', 'test-previous-nx-minor-version-cold'),
-  testPreviousNxMinorVersionCold
+  doc(db, 'test-previous-nx-minor-version-cold', currentUploadTime),
+  { ...testPreviousNxMinorVersionCold, angularVersion, nxVersion }
 );
 await setDoc(
-  doc(db, 'benchmarks', 'test-previous-nx-minor-version-warm'),
-  testPreviousNxMinorVersionWarm
+  doc(db, 'test-previous-nx-minor-version-warm', currentUploadTime),
+  { ...testPreviousNxMinorVersionWarm, angularVersion, nxVersion }
 );
 
 process.exit(0);
