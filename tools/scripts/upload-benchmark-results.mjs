@@ -32,19 +32,19 @@ const testPreviousNxMinorVersionWarm = (
 
 await setDoc(
   doc(db, 'benchmarks', 'build-previous-nx-minor-version-cold'),
-  results
+  buildPreviousNxMinorVersionCold
 );
 await setDoc(
   doc(db, 'benchmarks', 'build-previous-nx-minor-version-warm'),
-  results
+  buildPreviousNxMinorVersionWarm
 );
 await setDoc(
   doc(db, 'benchmarks', 'test-previous-nx-minor-version-cold'),
-  results
+  testPreviousNxMinorVersionCold
 );
 await setDoc(
   doc(db, 'benchmarks', 'test-previous-nx-minor-version-warm'),
-  results
+  testPreviousNxMinorVersionWarm
 );
 
 process.exit(0);
