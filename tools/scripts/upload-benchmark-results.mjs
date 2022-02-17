@@ -44,6 +44,16 @@ const testPreviousNxMinorVersionWarm = (
     assert: { type: 'json' },
   })
 ).default;
+const lintPreviousNxMinorVersionCold = (
+  await import('../../results/lint-previous-ng-major-version-cold.json', {
+    assert: { type: 'json' },
+  })
+).default;
+const lintPreviousNxMinorVersionWarm = (
+  await import('../../results/lint-previous-ng-major-version-warm.json', {
+    assert: { type: 'json' },
+  })
+).default;
 
 const currentUploadTime = `${Date.now()}`;
 
@@ -62,6 +72,14 @@ await setDoc(
 await setDoc(
   doc(db, 'test-previous-ng-major-version-warm', currentUploadTime),
   { ...testPreviousNxMinorVersionWarm, angularVersion, nxVersion }
+);
+await setDoc(
+  doc(db, 'lint-previous-ng-major-version-cold', currentUploadTime),
+  { ...lintPreviousNxMinorVersionCold, angularVersion, nxVersion }
+);
+await setDoc(
+  doc(db, 'lint-previous-ng-major-version-warm', currentUploadTime),
+  { ...lintPreviousNxMinorVersionWarm, angularVersion, nxVersion }
 );
 
 process.exit(0);
