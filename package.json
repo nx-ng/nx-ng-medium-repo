@@ -8,14 +8,14 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "benchmark:build:cold": "hyperfine --prepare 'rm -rf node_modules/.cache .angular/' 'yarn nx build app0' --export-json results/build-previous-nx-minor-version-cold.json",
-    "benchmark:build:warm": "hyperfine --warmup 1 'yarn nx build app0' --export-json results/build-previous-nx-minor-version-warm.json",
-    "benchmark:test:cold": "hyperfine 'yarn nx run-many --target=test --all --skip-nx-cache' --prepare 'yarn jest --clearCache' --max-runs 5 --export-json results/test-previous-nx-minor-version-cold.json",
-    "benchmark:test:warm": "hyperfine --warmup 1 'yarn nx run-many --target=test --all' --export-json results/test-previous-nx-minor-version-warm.json",
-    "benchmark:lint:cold": "hyperfine --prepare 'rm -rf node_modules/.cache .angular/' 'yarn nx run-many --target=lint --all' --export-json results/lint-previous-nx-minor-version-cold.json",
-    "benchmark:lint:warm": "hyperfine --warmup 1 'yarn nx run-many --target=lint --all' --export-json results/lint-previous-nx-minor-version-warm.json",
-    "benchmark:e2e:cold": "hyperfine --prepare 'rm -rf node_modules/.cache .angular/' 'yarn nx e2e app0' --export-json results/e2e-previous-nx-minor-version-cold.json",
-    "benchmark:e2e:warm": "hyperfine --warmup 1 'yarn nx e2e app0' --export-json results/e2e-previous-nx-minor-version-warm.json"
+    "benchmark:build:cold": "hyperfine --prepare 'rm -rf node_modules/.cache .angular/' 'yarn nx build app0' --export-json results/build-current-version-cold.json",
+    "benchmark:build:warm": "hyperfine --warmup 1 'yarn nx build app0' --export-json results/build-current-version-warm.json",
+    "benchmark:test:cold": "hyperfine 'yarn nx run-many --target=test --all --skip-nx-cache' --prepare 'yarn jest --clearCache' --max-runs 5 --export-json results/test-current-version-cold.json",
+    "benchmark:test:warm": "hyperfine --warmup 1 'yarn nx run-many --target=test --all' --export-json results/test-current-version-warm.json",
+    "benchmark:lint:cold": "hyperfine --prepare 'rm -rf node_modules/.cache .angular/' 'yarn nx run-many --target=lint --all' --export-json results/lint-current-version-cold.json",
+    "benchmark:lint:warm": "hyperfine --warmup 1 'yarn nx run-many --target=lint --all' --export-json results/lint-current-version-warm.json",
+    "benchmark:e2e:cold": "hyperfine --prepare 'rm -rf node_modules/.cache .angular/' 'yarn nx e2e app0' --export-json results/e2e-current-version-cold.json",
+    "benchmark:e2e:warm": "hyperfine --warmup 1 'yarn nx e2e app0' --export-json results/e2e-current-version-warm.json"
   },
   "private": true,
   "dependencies": {

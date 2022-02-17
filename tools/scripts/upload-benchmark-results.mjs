@@ -24,44 +24,48 @@ const { devDependencies, dependencies } = (
 const angularVersion = dependencies['@angular/core'];
 const nxVersion = devDependencies['@nrwl/tao'];
 
-const buildPreviousNxMinorVersionCold = (
-  await import('../../results/build-previous-nx-minor-version-cold.json', {
+const buildCurrentVersionCold = (
+  await import('../../results/build-current-version-cold.json', {
     assert: { type: 'json' },
   })
 ).default;
-const buildPreviousNxMinorVersionWarm = (
-  await import('../../results/build-previous-nx-minor-version-warm.json', {
+const buildCurrentVersionWarm = (
+  await import('../../results/build-current-version-warm.json', {
     assert: { type: 'json' },
   })
 ).default;
-const testPreviousNxMinorVersionCold = (
-  await import('../../results/test-previous-nx-minor-version-cold.json', {
+const testCurrentVersionCold = (
+  await import('../../results/test-current-version-cold.json', {
     assert: { type: 'json' },
   })
 ).default;
-const testPreviousNxMinorVersionWarm = (
-  await import('../../results/test-previous-nx-minor-version-warm.json', {
+const testCurrentVersionWarm = (
+  await import('../../results/test-current-version-warm.json', {
     assert: { type: 'json' },
   })
 ).default;
 
 const currentUploadTime = `${Date.now()}`;
 
-await setDoc(
-  doc(db, 'build-previous-nx-minor-version-cold', currentUploadTime),
-  { ...buildPreviousNxMinorVersionCold, angularVersion, nxVersion }
-);
-await setDoc(
-  doc(db, 'build-previous-nx-minor-version-warm', currentUploadTime),
-  { ...buildPreviousNxMinorVersionWarm, angularVersion, nxVersion }
-);
-await setDoc(
-  doc(db, 'test-previous-nx-minor-version-cold', currentUploadTime),
-  { ...testPreviousNxMinorVersionCold, angularVersion, nxVersion }
-);
-await setDoc(
-  doc(db, 'test-previous-nx-minor-version-warm', currentUploadTime),
-  { ...testPreviousNxMinorVersionWarm, angularVersion, nxVersion }
-);
+await setDoc(doc(db, 'build-current-version-cold', currentUploadTime), {
+  ...buildCurrentVersionCold,
+  angularVersion,
+  nxVersion,
+});
+await setDoc(doc(db, 'build-current-version-warm', currentUploadTime), {
+  ...buildCurrentVersionWarm,
+  angularVersion,
+  nxVersion,
+});
+await setDoc(doc(db, 'test-current-version-cold', currentUploadTime), {
+  ...testCurrentVersionCold,
+  angularVersion,
+  nxVersion,
+});
+await setDoc(doc(db, 'test-current-version-warm', currentUploadTime), {
+  ...testCurrentVersionWarm,
+  angularVersion,
+  nxVersion,
+});
 
 process.exit(0);

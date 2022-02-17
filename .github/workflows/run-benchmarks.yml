@@ -14,6 +14,8 @@ jobs:
           node-version: 16.x
       - name: Install Packages
         run: yarn install
+      - name: Clone and Use Local Nx
+        run: node tools/scripts/build-current-version.mjs
       - name: Benchmark Build - Cold
         run: yarn benchmark:build:cold
       - name: Benchmark Build - Warm
