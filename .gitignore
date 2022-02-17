@@ -2,7 +2,7 @@
 
 # compiled output
 /dist
-/tmp
+/tmp/**/
 /out-tsc
 
 # dependencies
@@ -42,3 +42,4 @@ Thumbs.db
 
 results/*.json
 .env
+!tmp/.gitkeep
