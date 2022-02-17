@@ -2,6 +2,10 @@ import { doc, setDoc, getFirestore } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInAnonymously } from 'firebase/auth';
 
+const NX_COMMIT = process.env.NX_COMMIT;
+const NX_BRANCH = process.env.NX_BRANCH;
+const NX_PR = process.env.NX_PR;
+
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
   authDomain: process.env.FIREBASE_AUTH_DOMAIN,
@@ -44,6 +48,16 @@ const testCurrentVersionWarm = (
     assert: { type: 'json' },
   })
 ).default;
+const lintCurrentVersionCold = (
+  await import('../../results/lint-current-version-cold.json', {
+    assert: { type: 'json' },
+  })
+).default;
+const lintCurrentVersionWarm = (
+  await import('../../results/lint-current-version-warm.json', {
+    assert: { type: 'json' },
+  })
+).default;
 
 const currentUploadTime = `${Date.now()}`;
 
@@ -51,21 +65,49 @@ await setDoc(doc(db, 'build-current-version-cold', currentUploadTime), {
   ...buildCurrentVersionCold,
   angularVersion,
   nxVersion,
+  nxCommit: NX_COMMIT || null,
+  nxBranch: NX_BRANCH || null,
+  nxPR: NX_PR || null,
 });
 await setDoc(doc(db, 'build-current-version-warm', currentUploadTime), {
   ...buildCurrentVersionWarm,
   angularVersion,
   nxVersion,
+  nxCommit: NX_COMMIT || null,
+  nxBranch: NX_BRANCH || null,
+  nxPR: NX_PR || null,
 });
 await setDoc(doc(db, 'test-current-version-cold', currentUploadTime), {
   ...testCurrentVersionCold,
   angularVersion,
   nxVersion,
+  nxCommit: NX_COMMIT || null,
+  nxBranch: NX_BRANCH || null,
+  nxPR: NX_PR || null,
 });
 await setDoc(doc(db, 'test-current-version-warm', currentUploadTime), {
   ...testCurrentVersionWarm,
   angularVersion,
   nxVersion,
+  nxCommit: NX_COMMIT || null,
+  nxBranch: NX_BRANCH || null,
+  nxPR: NX_PR || null,
+});
+await setDoc(doc(db, 'lint-current-version-cold', currentUploadTime), {
+  ...lintCurrentVersionCold,
+  angularVersion,
+  nxVersion,
+  nxCommit: NX_COMMIT || null,
+  nxBranch: NX_BRANCH || null,
+  nxPR: NX_PR || null,
+});
+await setDoc(doc(db, 'lint-current-version-warm', currentUploadTime), {
+  ...lintCurrentVersionWarm,
+  angularVersion,
+  nxVersion,
+  nxCommit: NX_COMMIT || null,
+  nxBranch: NX_BRANCH || null,
+  nxPR: NX_PR || null,
 });
 
 process.exit(0);

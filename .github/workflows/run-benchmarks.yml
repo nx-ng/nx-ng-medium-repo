@@ -1,5 +1,20 @@
 name: Nx Angular Benchmarks
-on: [push]
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      nxCommit:
+        description: 'Nx Commit SHA'
+        required: false
+        default: ''
+      nxBranch:
+        description: 'Nx Branch'
+        required: false
+        default: ''
+      nxPR:
+        description: 'Nx PR ID'
+        required: false
+        default: ''
 jobs:
   Run-Benchmarks:
     runs-on: ubuntu-latest
@@ -15,7 +30,11 @@ jobs:
       - name: Install Packages
         run: yarn install
       - name: Clone and Use Local Nx
-        run: node tools/scripts/build-current-version.mjs
+        run: |
+          NX_COMMIT=${{ github.event.inputs.nxCommit }} \
+          NX_BRANCH=${{ github.event.inputs.nxBranch }} \
+          NX_PR=${{ github.event.inputs.nxPR }} \
+          node tools/scripts/build-current-version.mjs
       - name: Benchmark Build - Cold
         run: yarn benchmark:build:cold
       - name: Benchmark Build - Warm
@@ -36,4 +55,7 @@ jobs:
           FIREBASE_STORAGE_BUCKET=${{ secrets.FIREBASE_STORAGE_BUCKET }} \
           FIREBASE_MESSAGE_SENDER_ID=${{ secrets.FIREBASE_MESSAGE_SENDER_ID }} \
           FIREBASE_APP_ID=${{ secrets.FIREBASE_APP_ID }} \
+          NX_COMMIT=${{ github.event.inputs.nxCommit }} \
+          NX_BRANCH=${{ github.event.inputs.nxBranch }} \
+          NX_PR=${{ github.event.inputs.nxPR }} \
           node --experimental-json-modules tools/scripts/upload-benchmark-results.mjs

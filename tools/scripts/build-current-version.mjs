@@ -3,6 +3,10 @@ import { existsSync, readFileSync, rmSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import ora from 'ora';
 
+const NX_COMMIT = process.env.NX_COMMIT;
+const NX_BRANCH = process.env.NX_BRANCH;
+const NX_PR = process.env.NX_PR;
+
 const PATH_TO_NX_LOCAL = join(process.cwd(), 'tmp/nx');
 
 function runWithConsoleSpinner(text, action) {
@@ -25,6 +29,30 @@ function cloneNx() {
     execSync(`git clone https://github.com/nrwl/nx.git ${PATH_TO_NX_LOCAL}`, {
       stdio: 'ignore',
     });
+
+    if (NX_COMMIT || NX_BRANCH || NX_PR) {
+      runWithConsoleSpinner(
+        'Checking out specified branch, commit or PR',
+        () => {
+          if (NX_PR && NX_BRANCH) {
+            execSync(
+              `git fetch origin pull/${NX_PR}/head:${NX_BRANCH} && git checkout ${NX_BRANCH}`,
+              { cwd: PATH_TO_NX_LOCAL, stdio: 'ignore' }
+            );
+          } else if (NX_BRANCH) {
+            execSync(`git checkout ${NX_BRANCH}`, {
+              cwd: PATH_TO_NX_LOCAL,
+              stdio: 'ignore',
+            });
+          } else if (NX_COMMIT) {
+            execSync(`git checkout ${NX_COMMIT}`, {
+              cwd: PATH_TO_NX_LOCAL,
+              stdio: 'ignore',
+            });
+          }
+        }
+      );
+    }
   });
 }
 
