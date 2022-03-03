@@ -35,6 +35,8 @@ jobs:
           NX_BRANCH=${{ github.event.inputs.nxBranch }} \
           NX_PR=${{ github.event.inputs.nxPR }} \
           node tools/scripts/build-current-version.mjs
+      - name: ReInstall Packages
+        run: yarn install
       - name: Benchmark Build - Cold
         run: yarn benchmark:build:cold
       - name: Benchmark Build - Warm
