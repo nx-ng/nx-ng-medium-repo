@@ -33,8 +33,8 @@ const buildCurrentVersionCold = (
     assert: { type: 'json' },
   })
 ).default;
-const buildCurrentVersionWarm = (
-  await import('../../results/build-current-version-warm.json', {
+const buildCurrentVersionCache = (
+  await import('../../results/build-current-version-cache.json', {
     assert: { type: 'json' },
   })
 ).default;
@@ -43,18 +43,8 @@ const testCurrentVersionCold = (
     assert: { type: 'json' },
   })
 ).default;
-const testCurrentVersionWarm = (
-  await import('../../results/test-current-version-warm.json', {
-    assert: { type: 'json' },
-  })
-).default;
 const lintCurrentVersionCold = (
   await import('../../results/lint-current-version-cold.json', {
-    assert: { type: 'json' },
-  })
-).default;
-const lintCurrentVersionWarm = (
-  await import('../../results/lint-current-version-warm.json', {
     assert: { type: 'json' },
   })
 ).default;
@@ -69,8 +59,8 @@ await setDoc(doc(db, 'build-current-version-cold', currentUploadTime), {
   nxBranch: NX_BRANCH || null,
   nxPR: NX_PR || null,
 });
-await setDoc(doc(db, 'build-current-version-warm', currentUploadTime), {
-  ...buildCurrentVersionWarm,
+await setDoc(doc(db, 'build-current-version-cache', currentUploadTime), {
+  ...buildCurrentVersionCache,
   angularVersion,
   nxVersion,
   nxCommit: NX_COMMIT || null,
@@ -85,24 +75,8 @@ await setDoc(doc(db, 'test-current-version-cold', currentUploadTime), {
   nxBranch: NX_BRANCH || null,
   nxPR: NX_PR || null,
 });
-await setDoc(doc(db, 'test-current-version-warm', currentUploadTime), {
-  ...testCurrentVersionWarm,
-  angularVersion,
-  nxVersion,
-  nxCommit: NX_COMMIT || null,
-  nxBranch: NX_BRANCH || null,
-  nxPR: NX_PR || null,
-});
 await setDoc(doc(db, 'lint-current-version-cold', currentUploadTime), {
   ...lintCurrentVersionCold,
-  angularVersion,
-  nxVersion,
-  nxCommit: NX_COMMIT || null,
-  nxBranch: NX_BRANCH || null,
-  nxPR: NX_PR || null,
-});
-await setDoc(doc(db, 'lint-current-version-warm', currentUploadTime), {
-  ...lintCurrentVersionWarm,
   angularVersion,
   nxVersion,
   nxCommit: NX_COMMIT || null,

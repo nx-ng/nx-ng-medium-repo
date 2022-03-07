@@ -39,16 +39,12 @@ jobs:
         run: yarn install
       - name: Benchmark Build - Cold
         run: yarn benchmark:build:cold
-      - name: Benchmark Build - Warm
-        run: yarn benchmark:build:warm
+      - name: Benchmark Build - Cache
+        run: yarn benchmark:build:cache
       - name: Benchmark Lint - Cold
         run: yarn benchmark:lint:cold
-      - name: Benchmark Lint - Warm
-        run: yarn benchmark:lint:warm
       - name: Benchmark Test - Cold
         run: yarn benchmark:test:cold
-      - name: Benchmark Test - Warm
-        run: yarn benchmark:test:warm
       - name: Upload Benchmark Results
         run: |
           FIREBASE_API_KEY=${{ secrets.FIREBASE_API_KEY }} \
