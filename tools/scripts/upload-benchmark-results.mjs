@@ -29,8 +29,8 @@ const buildPreviousNxMinorVersionCold = (
     assert: { type: 'json' },
   })
 ).default;
-const buildPreviousNxMinorVersionWarm = (
-  await import('../../results/build-previous-nx-minor-version-warm.json', {
+const buildPreviousNxMinorVersionCache = (
+  await import('../../results/build-previous-nx-minor-version-cache.json', {
     assert: { type: 'json' },
   })
 ).default;
@@ -39,18 +39,8 @@ const testPreviousNxMinorVersionCold = (
     assert: { type: 'json' },
   })
 ).default;
-const testPreviousNxMinorVersionWarm = (
-  await import('../../results/test-previous-nx-minor-version-warm.json', {
-    assert: { type: 'json' },
-  })
-).default;
 const lintPreviousNxMinorVersionCold = (
   await import('../../results/lint-previous-nx-minor-version-cold.json', {
-    assert: { type: 'json' },
-  })
-).default;
-const lintPreviousNxMinorVersionWarm = (
-  await import('../../results/lint-previous-nx-minor-version-warm.json', {
     assert: { type: 'json' },
   })
 ).default;
@@ -62,24 +52,16 @@ await setDoc(
   { ...buildPreviousNxMinorVersionCold, angularVersion, nxVersion }
 );
 await setDoc(
-  doc(db, 'build-previous-nx-minor-version-warm', currentUploadTime),
-  { ...buildPreviousNxMinorVersionWarm, angularVersion, nxVersion }
+  doc(db, 'build-previous-nx-minor-version-cache', currentUploadTime),
+  { ...buildPreviousNxMinorVersionCache, angularVersion, nxVersion }
 );
 await setDoc(
   doc(db, 'test-previous-nx-minor-version-cold', currentUploadTime),
   { ...testPreviousNxMinorVersionCold, angularVersion, nxVersion }
 );
 await setDoc(
-  doc(db, 'test-previous-nx-minor-version-warm', currentUploadTime),
-  { ...testPreviousNxMinorVersionWarm, angularVersion, nxVersion }
-);
-await setDoc(
   doc(db, 'lint-previous-nx-minor-version-cold', currentUploadTime),
   { ...lintPreviousNxMinorVersionCold, angularVersion, nxVersion }
-);
-await setDoc(
-  doc(db, 'lint-previous-nx-minor-version-warm', currentUploadTime),
-  { ...lintPreviousNxMinorVersionWarm, angularVersion, nxVersion }
 );
 
 process.exit(0);
