@@ -59,6 +59,7 @@ function cloneNx() {
 function installNxDeps() {
   runWithConsoleSpinner('Install Nx Dependencies', () => {
     execSync(`yarn install`, { cwd: PATH_TO_NX_LOCAL, stdio: 'ignore' });
+    execSync(`yarn install`, { stdio: 'ignore' });
   });
 }
 
