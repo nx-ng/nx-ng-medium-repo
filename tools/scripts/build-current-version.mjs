@@ -1,7 +1,6 @@
 import { execSync } from 'child_process';
 import { existsSync, readFileSync, rmSync, writeFileSync } from 'fs';
 import { join } from 'path';
-import ora from 'ora';
 
 const NX_COMMIT = process.env.NX_COMMIT;
 const NX_BRANCH = process.env.NX_BRANCH;
@@ -10,10 +9,8 @@ const NX_PR = process.env.NX_PR;
 const PATH_TO_NX_LOCAL = join(process.cwd(), 'tmp/nx');
 
 function runWithConsoleSpinner(text, action) {
-  const spinner = ora({ text, color: 'cyan' });
-  spinner.start();
+  console.log(text);
   action();
-  spinner.succeed();
 }
 
 function tearDown() {
@@ -59,7 +56,6 @@ function cloneNx() {
 function installNxDeps() {
   runWithConsoleSpinner('Install Nx Dependencies', () => {
     execSync(`yarn install`, { cwd: PATH_TO_NX_LOCAL, stdio: 'ignore' });
-    execSync(`yarn install`, { stdio: 'ignore' });
   });
 }
 

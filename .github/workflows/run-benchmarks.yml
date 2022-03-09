@@ -29,8 +29,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16.x
-      - name: Install Packages
-        run: yarn install
       - name: Clone and Use Local Nx
         run: |
           NX_COMMIT=${{ github.event.inputs.nxCommit }} \
