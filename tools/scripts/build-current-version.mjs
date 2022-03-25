@@ -88,6 +88,7 @@ function updatePackageJsonPointToDist() {
         '@nrwl/linter': 'file:./tmp/nx/build/packages/linter',
         '@nrwl/tao': 'file:./tmp/nx/build/packages/tao',
         '@nrwl/workspace': 'file:./tmp/nx/build/packages/workspace',
+        nx: 'file:./tmp/nx/build/packages/nx',
       },
     };
 
