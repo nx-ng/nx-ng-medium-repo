@@ -94,7 +94,7 @@ function updatePackageJsonPointToDist() {
 
     writeFileSync(PKG_JSON_PATH, JSON.stringify(updatedPkgJson, null, 2));
 
-    execSync(`yarn install`, { stdio: 'ignore' });
+    execSync(`yarn install`, { shell: true });
   });
 }
 
