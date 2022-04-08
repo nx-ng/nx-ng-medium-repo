@@ -22,7 +22,7 @@ const { devDependencies, dependencies } = (
 ).default;
 
 const angularVersion = dependencies['@angular/core'];
-const nxVersion = devDependencies['@nrwl/tao'];
+const nxVersion = devDependencies['nx'];
 
 const buildPreviousNxMinorVersionCold = (
   await import('../../results/build-previous-nx-minor-version-cold.json', {
