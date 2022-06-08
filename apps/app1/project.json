@@ -1,6 +1,5 @@
 {
   "projectType": "application",
-  "root": "apps/app1",
   "sourceRoot": "apps/app1/src",
   "prefix": "nx-ng-medium",
   "targets": {
@@ -79,7 +78,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/app1"],
       "options": {
-        "jestConfig": "apps/app1/jest.config.js",
+        "jestConfig": "apps/app1/jest.config.ts",
         "passWithNoTests": true
       }
     }

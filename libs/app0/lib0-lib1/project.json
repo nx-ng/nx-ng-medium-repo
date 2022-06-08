@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/app0/lib0-lib1",
   "sourceRoot": "libs/app0/lib0-lib1/src",
   "prefix": "nx-ng-medium",
   "targets": {
@@ -8,7 +7,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/app0/lib0-lib1"],
       "options": {
-        "jestConfig": "libs/app0/lib0-lib1/jest.config.js",
+        "jestConfig": "libs/app0/lib0-lib1/jest.config.ts",
         "passWithNoTests": true
       }
     },
