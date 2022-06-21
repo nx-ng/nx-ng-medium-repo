@@ -8,7 +8,7 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "benchmark:build:cold": "hyperfine --prepare 'rm -rf node_modules/.cache .angular/' 'NX_DAEMON=false yarn nx build app0 --skip-nx-cache' --export-json results/build-current-version-cold.json",
+    "benchmark:build:cold": "hyperfine --prepare 'rm -rf node_modules/.cache .angular/' 'NX_DAEMON=false yarn nx build app0 -- --skip-nx-cache' --max-runs 5 --export-json results/build-current-version-cold.json",
     "benchmark:build:cache": "hyperfine --warmup 1 'NX_DAEMON=false yarn nx build app0' --export-json results/build-current-version-cache.json",
     "benchmark:test:cold": "hyperfine 'NX_DAEMON=false yarn nx run-many --target=test --all --skip-nx-cache' --prepare 'yarn jest --clearCache' --max-runs 5 --export-json results/test-current-version-cold.json",
     "benchmark:lint:cold": "hyperfine --prepare 'rm -rf node_modules/.cache .angular/' 'NX_DAEMON=false yarn nx run-many --target=lint --all --skip-nx-cache' --export-json results/lint-current-version-cold.json",
@@ -24,7 +24,7 @@
     "@angular/platform-browser": "14.0.0",
     "@angular/platform-browser-dynamic": "14.0.0",
     "@angular/router": "14.0.0",
-    "@nrwl/angular": "14.3.6",
+    "@nrwl/angular": "file:./tmp/nx/build/packages/angular",
     "firebase": "^9.6.6",
     "rxjs": "6.5.5",
     "tslib": "^2.0.0",
@@ -38,11 +38,11 @@
     "@angular/cli": "~14.0.0",
     "@angular/compiler-cli": "14.0.0",
     "@angular/language-service": "14.0.0",
-    "@nrwl/cypress": "14.3.6",
-    "@nrwl/eslint-plugin-nx": "14.3.6",
-    "@nrwl/jest": "14.3.6",
-    "@nrwl/linter": "14.3.6",
-    "@nrwl/workspace": "14.3.6",
+    "@nrwl/cypress": "file:./tmp/nx/build/packages/cypress",
+    "@nrwl/eslint-plugin-nx": "file:./tmp/nx/build/packages/eslint-plugin-nx",
+    "@nrwl/jest": "file:./tmp/nx/build/packages/jest",
+    "@nrwl/linter": "file:./tmp/nx/build/packages/linter",
+    "@nrwl/workspace": "file:./tmp/nx/build/packages/workspace",
     "@types/jest": "27.4.1",
     "@types/node": "16.11.7",
     "@typescript-eslint/eslint-plugin": "5.24.0",
@@ -57,7 +57,6 @@
     "prettier": "2.6.2",
     "ts-jest": "27.1.4",
     "typescript": "4.7.3",
-    "nx": "14.3.6"
+    "nx": "file:./tmp/nx/build/packages/nx"
   }
 }
-

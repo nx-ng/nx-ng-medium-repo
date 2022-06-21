@@ -80,13 +80,11 @@ function updatePackageJsonPointToDist() {
       },
       devDependencies: {
         ...pkgJson.devDependencies,
-        '@nrwl/cli': 'file:./tmp/nx/build/packages/cli',
         '@nrwl/cypress': 'file:./tmp/nx/build/packages/cypress',
         '@nrwl/eslint-plugin-nx':
           'file:./tmp/nx/build/packages/eslint-plugin-nx',
         '@nrwl/jest': 'file:./tmp/nx/build/packages/jest',
         '@nrwl/linter': 'file:./tmp/nx/build/packages/linter',
-        '@nrwl/tao': 'file:./tmp/nx/build/packages/tao',
         '@nrwl/workspace': 'file:./tmp/nx/build/packages/workspace',
         nx: 'file:./tmp/nx/build/packages/nx',
       },

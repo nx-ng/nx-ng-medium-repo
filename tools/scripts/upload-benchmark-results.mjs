@@ -26,7 +26,7 @@ const { devDependencies, dependencies } = (
 ).default;
 
 const angularVersion = dependencies['@angular/core'];
-const nxVersion = devDependencies['@nrwl/tao'];
+const nxVersion = devDependencies['nx'];
 
 const buildCurrentVersionCold = (
   await import('../../results/build-current-version-cold.json', {
